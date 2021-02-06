@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas example</title>
+
+    <style>
+        #canvas1 {
+            border: solid black 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas1" width="100px" height="100px">
+
+    </canvas>
+    
+    <script>
+        var canvas = document.getElementById("canvas1");
+        var ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "red";
+        ctx.fillRect(0,0, 40, 40);
+
+        ctx.strokeStyle = "blue";
+        ctx.beginPath();
+        ctx.moveTo(100, 0);
+        ctx.lineTo(50, 100);
+        ctx.stroke();
+
+        var state = false;
+
+        setInterval(function() {
+            // Switch between red and blue
+            state = !state;
+
+            ctx.fillStyle = state? "red": "green";
+
+            ctx.fillRect(0,0, 40, 40);
+        }, 1000);
+    </script>
+</body>
+</html>
